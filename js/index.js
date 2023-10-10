@@ -19,6 +19,7 @@ window.addEventListener(
   "scroll",
   _.throttle(function () {
     if (window.scrollY > 500) {
+      // gsap.to(요소, 지속시간, 옵션);
       gsap.to(badgeEl, 0.6, {
         opacity: 0,
         display: "none",
@@ -32,3 +33,35 @@ window.addEventListener(
   }, 300)
 );
 // _.throttle(함수, 시간 {
+
+const fadeEls = document.querySelectorAll(".visual .fade-in");
+fadeEls.forEach(function (fadeEl, index) {
+  gsap.to(fadeEl, 1, {
+    delay: (index + 1) * 0.5,
+    opacity: 1,
+  });
+});
+// 선택자, 옵션
+new Swiper(".notice-line .swiper-container", {
+  direction: "vertical",
+  autoplay: true,
+  loop: true,
+});
+
+new Swiper(".promotion .swiper-container", {
+  slidesPerView: 3,
+  spaceBetween: 10,
+  centeredSlides: true,
+  loop: true,
+  autoplay: {
+    delay: 5000,
+  },
+  navigation: {
+    prevEl: ".promotion .swiper-prev",
+    nextEl: ".promotion .swiper-next",
+   },
+  pagination: {
+    el: ".promotion .swiper-pagination",
+    clickable: true,
+  }
+});
