@@ -78,3 +78,26 @@ promotionToggleBtn.addEventListener("click", function () {
     promotionEl.classList.remove("hide");
   }
 });
+
+function random(min, max) {
+  // .toFixed() 반환된 문자 데이터를
+  // parseFloat을 통해 소수점을 가지는 숫자 데이터로 변환
+  return parseFloat((Math.random() * (max - min) + min).toFixed(2));
+}
+
+function floatingObj(selector, delay, size) {
+  gsap.to(
+    selector, //선택자
+    random(1.5, 2.5), // 애니메이션 동작 시간
+    {
+      y: size,
+      repeat: -1,
+      yoyo: true,
+      ease: Power1.easeInOut,
+      delay: random(0, delay),
+    }
+  );
+}
+floatingObj(".floating1", 1, 15);
+floatingObj(".floating2", 0.5, 15);
+floatingObj(".floating3", 1.5, 20);
